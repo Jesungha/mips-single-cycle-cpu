@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+  `timescale 1ns / 1ps
 /*
  * Module: InstructionMemory
  *
@@ -49,7 +49,7 @@ module InstructionMemory (
 	 */
 
 
-      63'h000: Data = 32'hF84003E9;
+      /*63'h000: Data = 32'hF84003E9;
       63'h004: Data = 32'hF84083EA;
       63'h008: Data = 32'hF84103EB;
       63'h00c: Data = 32'hF84183EC;
@@ -63,8 +63,24 @@ module InstructionMemory (
       63'h02c: Data = 32'hF80203ED;
       63'h030:
       Data = 32'hF84203ED;  //One last load to place stored value on memdbus for test checking.
-
+      */
       /* Add code for your tests here */
+
+      /*
+      Movz Test
+      1. Movz 1234 into register x9
+      2. LSL x9 by 12
+      3. Movz 5678 into register x10
+      4. LSL x10 by 8
+      5. add X9 and X10
+      6. Movz 9ABC into register x10
+      7. LSL x10 by 4
+      8. add X9 and X10
+      9. Movz DEF0 into register x10
+      10. add X9 and X10
+      */
+
+      63'h000: Data = {11'b11010010100, 4'h1234};
 
 
       default: Data = 32'hXXXXXXXX;

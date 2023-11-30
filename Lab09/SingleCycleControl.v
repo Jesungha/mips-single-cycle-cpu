@@ -6,13 +6,15 @@
 `define OPCODE_ADDIMM 11'b?0?10001???
 `define OPCODE_SUBIMM 11'b?1?10001???
 
-`define OPCODE_MOVZ   11'b110100101??
 
 `define OPCODE_B      11'b?00101?????
 `define OPCODE_CBZ    11'b?011010????
 
 `define OPCODE_LDUR   11'b11111000010
 `define OPCODE_STUR   11'b??111000000
+
+`define OPCODE_MOVZ   11'b110100101??
+
 `timescale 1ns / 1ps
 module control(
     output reg reg2loc,
@@ -172,6 +174,20 @@ begin
             aluop         <= 4'b0010;
             signop        <= 2'b01;
 	  end
+
+    `OPCODE_MOVZ : //MOVZ
+        begin
+            reg2loc       <= 1'bx;
+            alusrc        <= 1'b1;
+            mem2reg       <= 1'b0;
+            regwrite      <= 1'b1;
+            memread       <= 1'b0;
+            memwrite      <= 1'b0;
+            branch        <= 1'b0;
+            uncond_branch <= 1'b0;
+            aluop         <= 4'b0111;
+            signop        <= 2'bxx;
+        end
 
         default:
         begin
