@@ -32,7 +32,7 @@ module ALU(BusW, BusA, BusB, ALUCtrl, Zero);
 			end
 			
         endcase
-        //$display("BusW:%h", BusW);
+        $display("ALUOUT:%h", BusW);
     end
 	
     assign Zero = (BusW ? 0 : 1);

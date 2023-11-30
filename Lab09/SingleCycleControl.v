@@ -188,7 +188,18 @@ begin
         end
         
     endcase
+    
     //$display("mem2reg:%h", mem2reg);
+    //$display("reg2loc:%h", reg2loc);
+    //$display("regwrite:%h", regwrite);
+    //$display("memread:%h", memread);
+    //$display("memwrite:%h", memwrite);
+    //$display("branch:%h", branch);
+    //$display("uncond_branch:%h", uncond_branch);
+    //$display("aluop:%h", aluop);
+    //$display("signop:%h", signop);
+    
+
 end
 
 endmodule

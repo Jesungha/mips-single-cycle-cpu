@@ -85,7 +85,6 @@ module SingleCycleProcTest_v;
 	   @(posedge CLK);  
 		   $display("CurrentPC:%h",currentPC);
            //$display("MemtoReg:%h",MemtoRegOut);
-           $display("regs:%h", );
 	   @(negedge CLK);
 
         end
@@ -97,7 +96,7 @@ module SingleCycleProcTest_v;
       // ***********************************************************
 
       // Done
-      allPassed(passed, 2);   // Be sure to change the one to match
+      allPassed(passed, 1);   // Be sure to change the one to match
       // the number of tests you add.
       $finish;
    end

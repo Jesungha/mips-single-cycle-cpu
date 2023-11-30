@@ -79,4 +79,5 @@ module DataMemory(ReadData , Address , WriteData , MemoryRead , MemoryWrite , Cl
              // $display("Writing Address:%h Data:%h",Address, WriteData);
           end
      end
+     //$display("Dmem:%h",ReadData);
 endmodule
