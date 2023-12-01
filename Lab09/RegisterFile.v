@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+
 
 module RegisterFile(BusA, BusB, BusW, RA, RB, RW, RegWr, Clk);
     output [63:0] BusA;
@@ -9,7 +9,7 @@ module RegisterFile(BusA, BusB, BusW, RA, RB, RW, RegWr, Clk);
     input [4:0] RB;
     input RegWr;
     input Clk;
-    reg [31:0] registers [63:0];
+    reg [63:0] registers [31:0];
 	
 	
 	assign #2 BusA = (RA==31) ? 0 : registers[RA];
@@ -21,6 +21,7 @@ module RegisterFile(BusA, BusB, BusW, RA, RB, RW, RegWr, Clk);
             registers[31] <= #3 0; 
         $display("Ra:%d", RA);    
         $display("Rb:%d", RB);
+        $display("Rw:%d", RW);
         $display("BusA:%h", BusA);
         $display("BusB:%h", BusB);
         $display("BusW:%h", BusW);

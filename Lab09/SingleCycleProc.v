@@ -94,13 +94,7 @@ module singlecycle (
       .opcode(opcode)
   );
 
-	ALU alu(
-	.BusW(aluout), 
-	.Zero(zero), 
-	.BusA(regoutA), 
-	.BusB(MuxToAlu), 
-	.ALUCtrl(aluctrl)
-	);
+
   // Parts of instruction
   RegisterFile regFile (
       .RA(rm),
@@ -121,7 +115,13 @@ module singlecycle (
   );
 
   //MuxToALU wire
-
+	ALU alu(
+	.BusW(aluout), 
+	.Zero(zero), 
+	.BusA(regoutA), 
+	.BusB(MuxToAlu), 
+	.ALUCtrl(aluctrl)
+	);
 
   DataMemory dmem (
       .ReadData(extmem),

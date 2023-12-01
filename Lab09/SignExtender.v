@@ -52,6 +52,7 @@ module SignExtender(BusImm, Imm26, Ctrl);
 				end
 			
 		endcase
+		$display("sign extender BusImm:%h", BusImm);
 	end
 endmodule
 

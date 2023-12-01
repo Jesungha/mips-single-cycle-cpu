@@ -49,7 +49,7 @@ module InstructionMemory (
 	 */
 
 
-      /*63'h000: Data = 32'hF84003E9;
+      63'h000: Data = 32'hF84003E9;
       63'h004: Data = 32'hF84083EA;
       63'h008: Data = 32'hF84103EB;
       63'h00c: Data = 32'hF84183EC;
@@ -63,7 +63,7 @@ module InstructionMemory (
       63'h02c: Data = 32'hF80203ED;
       63'h030:
       Data = 32'hF84203ED;  //One last load to place stored value on memdbus for test checking.
-      */
+      
       /* Add code for your tests here */
 
       /*
@@ -83,19 +83,24 @@ module InstructionMemory (
       10. add X9 and X10
       */
 
-      63'h000: Data = {11'b11010010111, 16'h1234, 5'b01001};//Movz 1234 into register x9  + lsl by 12*16
+      63'h034: Data = {11'b11010010111, 16'h1234, 5'b01001};//Movz 1234 into register x9  + lsl by 12*16
       //63'h004: Data = {11'b110100101xx, 16'h00C0, 5'b01011};//Movz X11 to 12* 16
       //63'h008: Data = {11'b11010011011, 5'b01001,6'b000000, 5'b01011, 5'b01001};//LSL x9 by 12 * 16
-      63'h004: Data = {11'b11010010110, 16'h5678, 5'b01010};//Movz 5678 into register x10 + lsl by 8*16
+      63'h038: Data = {11'b11010010110, 16'h5678, 5'b01010};//Movz 5678 into register x10 + lsl by 8*16
       //63'h004: Data = {11'b110100101xx, 16'h0080, 5'b01011};//Movz X11 to 8
       //63'h010: Data = {11'b110100101xx, 5'b01010, 6'b000000, 5'b01011, 5'b01010};//LSL x10 by 8 * 16
-      63'h008: Data = {11'bx0x01011xxx, 5'b01010, 6'b000000, 5'b01001, 5'b01001};//add X9 and X10
-      63'h00c: Data = {11'b11010010101, 16'h9ABC, 5'b01010};//Movz 9ABC into register x10 + lsl by 4
+      63'h03c: Data = {11'bx0x01011xxx, 5'b01010, 6'b000000, 5'b01001, 5'b01001};//add X9 and X10
+      63'h040: Data = {11'b11010010101, 16'h9ABC, 5'b01010};//Movz 9ABC into register x10 + lsl by 4
       //63'h01C: Data = {11'b110100101xx, 16'h0040, 5'b01011};//Movz X11 to 4
       //63'h020: Data = {11'b110100101xx, 5'b01010, 6'b000000, 5'b01011, 5'b01010};//LSL x10 by 4
-      63'h010: Data = {11'bx0x01011xxx, 5'b01010,6'b000000, 5'b01001, 5'b01001};//add X9 and X10
-      63'h014: Data = {11'b11010010100, 16'hDEF0, 5'b01010};//Movz DEF0 into register x10
-      63'h018: Data = {11'bx0x01011xxx, 5'b01010,6'b000000, 5'b01001, 5'b01001};//add X9 and X10
+      63'h044: Data = {11'bx0x01011xxx, 5'b01010,6'b000000, 5'b01001, 5'b01001};//add X9 and X10
+      63'h048: Data = {11'b11010010100, 16'hDEF0, 5'b01010};//Movz DEF0 into register x10
+      63'h04c: Data = {11'bx0x01011xxx, 5'b01010,6'b000000, 5'b01001, 5'b01001};//add X9 and X10
+      //stur
+      63'h050: Data = 32'hF80203E9;//stur X9, [XZR, 0x20]]
+      //ldur
+      63'h054: Data = 32'hF84203E9;//ldur X9, [XZR, 0x20]]
+
 
       default: Data = 32'hXXXXXXXX;
     endcase
