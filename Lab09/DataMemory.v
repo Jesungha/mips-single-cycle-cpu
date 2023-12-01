@@ -41,7 +41,6 @@ module DataMemory(ReadData , Address , WriteData , MemoryRead , MemoryWrite , Cl
         initset( 64'h20, 64'h0); //clearing space
 
         // Add any data you need for your tests here.
-        initset( 64'h22, 64'h123456789abcdef0)
 
      end
 

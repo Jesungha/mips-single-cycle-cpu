@@ -69,18 +69,40 @@ module InstructionMemory (
       /*
       Movz Test
       1. Movz 1234 into register x9
-      2. LSL x9 by 12
+      1-2. set X11 to 12* 16
+      2. LSL x9 by 12 * 16
       3. Movz 5678 into register x10
+      3-2 set X11 to 8 * 16
       4. LSL x10 by 8
       5. add X9 and X10
       6. Movz 9ABC into register x10
+      6-2 set X11 to 4
       7. LSL x10 by 4
       8. add X9 and X10
       9. Movz DEF0 into register x10
       10. add X9 and X10
       */
 
-      63'h000: Data = {11'b11010010100, 4'h1234};
+      63'h000: Data = {11'b11010010100, 16'h1234, 5'b01001};//Movz 1234 into register x9
+      63'h004: Data = {11'b11010010100, 16'h00C0, 5'b01011};//Movz X11 to 12* 16
+      63'h008: Data = {11'b11010011011, 5'b01001,6'b000000, 5'b01011, 5'b01001};//LSL x9 by 12 * 16
+      63'h00C: Data = {11'b11010010100, 16'h5678, 5'b01010};//Movz 5678 into register x10
+      63'h004: Data = {11'b11010010100, 16'h0080, 5'b01011};//Movz X11 to 8
+      63'h010: Data = {11'b11010010100, 5'b01010, 6'b000000, 5'b01011, 5'b01010};//LSL x10 by 8 * 16
+      63'h014: Data = {11'b10001011000, 4'b0101, 5'b01001, 5'b01010};//add X9 and X10
+      63'h018: Data = {11'b11010010100, 16'h9ABC, 5'b01010};//Movz 9ABC into register x10
+      63'h01C: Data = {11'b11010010100, 16'h0040, 5'b01011};//Movz X11 to 4
+      63'h020: Data = {11'b11010010100, 5'b01010, 6'b000000, 5'b01011, 5'b01010};//LSL x10 by 4
+      63'h024: Data = {11'b10001011000, 4'b0101, 5'b01001, 5'b01010};//add X9 and X10
+      63'h028: Data = {11'b11010010100, 16'hDEF0, 5'b01010};//Movz DEF0 into register x10
+      63'h02C: Data = {11'b10001011000, 4'b0101, 5'b01001, 5'b01010};//add X9 and X10
+      63'h030: Data = {11'bxx111000000,9'h28,2'h0,5'd31,5'b01001}; //stur x9 [xzr,0x28]
+      63'h034: Data = {11'bxx111000010,9'h28,2'h0,5'd31,5'h10};//ldur x10, [xzr, 0x28]
+
+     
+      
+      
+
 
 
       default: Data = 32'hXXXXXXXX;

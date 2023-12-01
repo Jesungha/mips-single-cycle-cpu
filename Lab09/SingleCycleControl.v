@@ -175,9 +175,9 @@ begin
             signop        <= 2'b01;
 	  end
 
-    `OPCODE_MOVZ : //MOVZ
-        begin
-            reg2loc       <= 1'bx;
+    `OPCODE_MOVZ : // MOVZ
+	begin
+	    reg2loc       <= 1'b0;
             alusrc        <= 1'b1;
             mem2reg       <= 1'b0;
             regwrite      <= 1'b1;
@@ -186,14 +186,14 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0111;
-            signop        <= 2'bxx;
-        end
+            signop        <= {1'b1, opcode[1:0]};
+	end
 
         default:
         begin
             reg2loc       <= 1'bx;
             alusrc        <= 1'bx;
-            mem2reg       <= 1'bx;
+            mem2reg       <= 1'b1;
             regwrite      <= 1'b0;
             memread       <= 1'b0;
             memwrite      <= 1'b0;

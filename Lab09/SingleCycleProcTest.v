@@ -80,23 +80,24 @@ module SingleCycleProcTest_v;
       // cycles.
       // ***********************************************************
 		
-      while (currentPC < 64'h30)
+      while (currentPC <64'h34)
         begin
 	   @(posedge CLK);  
-		   $display("CurrentPC:%h",currentPC);
+		   $display("CurrentPC:%h\nMemtoRegOut:%h",currentPC, MemtoRegOut);
            //$display("MemtoReg:%h",MemtoRegOut);
 	   @(negedge CLK);
 
         end
       
-      passTest(MemtoRegOut, 64'hF, "Results of Program 1", passed);
+      //passTest(MemtoRegOut, 64'hF, "Results of Program 1", passed);
+      passTest(MemtoRegOut, 64'h123456789abcdef0, "Results of Program 1", passed);
 
       // ***********************************************************
       // Add your new tests here
       // ***********************************************************
 
       // Done
-      allPassed(passed, 1);   // Be sure to change the one to match
+      allPassed(passed, 1);  // Be sure to change the one to match
       // the number of tests you add.
       $finish;
    end
