@@ -35,7 +35,7 @@ module singlecycle (
   wire        branch;
   wire        uncond_branch;
   wire [ 3:0] aluctrl;
-  wire [ 1:0] signop;
+  wire [ 2:0] signop;
 
   // Register file connections
   wire [63:0] regoutA;  // Output A

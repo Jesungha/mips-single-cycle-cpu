@@ -80,11 +80,10 @@ module SingleCycleProcTest_v;
       // cycles.
       // ***********************************************************
 		
-      while (currentPC <64'h34)
+      while (currentPC <64'h1C)
         begin
 	   @(posedge CLK);  
 		   $display("CurrentPC:%h\nMemtoRegOut:%h",currentPC, MemtoRegOut);
-           //$display("MemtoReg:%h",MemtoRegOut);
 	   @(negedge CLK);
 
         end

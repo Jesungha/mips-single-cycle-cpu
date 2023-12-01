@@ -26,7 +26,7 @@ module control(
     output reg branch,
     output reg uncond_branch,
     output reg [3:0] aluop,
-    output reg [1:0] signop,
+    output reg [2:0] signop,
     input [10:0] opcode
 );
 
@@ -45,7 +45,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0000;
-            signop        <= 2'bxx;
+            signop        <= 3'bxxx;
 	end
 		
     `OPCODE_ORRREG : // ORR
@@ -59,7 +59,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0001;
-            signop        <= 2'bxx;
+            signop        <= 3'bxxx;
 	end
 		
     `OPCODE_ADDREG : // ADDR
@@ -73,7 +73,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0010;
-            signop        <= 2'bxx;
+            signop        <= 3'bxxx;
 	end
 		
     `OPCODE_SUBREG : // SUBR
@@ -87,7 +87,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0110;
-            signop        <= 2'bxx;
+            signop        <= 3'bxxx;
         end
 		
     `OPCODE_ADDIMM : // ADDI			
@@ -101,7 +101,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0010;
-            signop        <= 2'b00;
+            signop        <= 3'b000;
 		end
 		
     `OPCODE_SUBIMM : // SUBI			
@@ -115,7 +115,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0110;
-            signop        <= 2'b00;
+            signop        <= 3'b000;
 	end
 		
 		
@@ -130,7 +130,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b1;
             aluop         <= 4'b0111;
-            signop        <= 2'b10;
+            signop        <= 3'b010;
 	end
 		
     `OPCODE_CBZ : // CBZ
@@ -144,7 +144,7 @@ begin
             branch        <= 1'b1;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0111;
-            signop        <= 2'b11;
+            signop        <= 3'b011;
 	end
 		
     `OPCODE_LDUR : // LDUR
@@ -158,7 +158,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'bx;
             aluop         <= 4'b0010;
-            signop        <= 2'b01;
+            signop        <= 3'b001;
 	  end
 		
     `OPCODE_STUR : //STUR
@@ -172,12 +172,12 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0010;
-            signop        <= 2'b01;
+            signop        <= 3'b01;
 	  end
 
     `OPCODE_MOVZ : // MOVZ
 	begin
-	    reg2loc       <= 1'b0;
+	    reg2loc       <= 1'b1;
             alusrc        <= 1'b1;
             mem2reg       <= 1'b0;
             regwrite      <= 1'b1;
@@ -186,7 +186,7 @@ begin
             branch        <= 1'b0;
             uncond_branch <= 1'b0;
             aluop         <= 4'b0111;
-            signop        <= {1'b1, opcode[1:0]};
+            signop        <= {1'b1,opcode[1:0]};
 	end
 
         default:
